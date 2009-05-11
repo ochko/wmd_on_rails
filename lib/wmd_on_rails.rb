@@ -2,7 +2,8 @@ module WmdOnRails
   module EditorHelper
     def enable_wmd(user_params = {})
       default_params = {
-        :output => 'Markdown'
+        :output => 'Markdown',
+        :autostart => false
       }
       params = default_params.merge(user_params)
       
@@ -14,7 +15,8 @@ module WmdOnRails
     
     def enable_resizable_wmd(user_params = {})
       default_params = {
-        :output => 'Markdown'
+        :output => 'Markdown',
+        :autostart => false
       }
       params = default_params.merge(user_params)
       
@@ -37,7 +39,7 @@ module WmdOnRails
 
     def create_wmd(textarea_id, preview_id = nil)
       js = <<EOF
-var textarea = document.getElementById(#{textarea_id.inspect});
+var #{textarea_id} = document.getElementById(#{textarea_id.inspect});
 EOF
       if preview_id
         js += <<EOF
@@ -48,7 +50,7 @@ var editor = new Attacklab.wmd.editor(textarea, previewManager.refresh);
 EOF
       else
         js += <<EOF
-var editor = new Attacklab.wmd.editor(textarea);
+var #{textarea_id}_editor = new Attacklab.wmd.editor(#{textarea_id});
 EOF
       end
 
