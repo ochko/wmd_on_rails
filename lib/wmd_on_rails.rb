@@ -86,6 +86,15 @@ EOF
       return inputs 
     end
     
+    def wmd_with_preview(object, field, options = {})
+      p_id = wmd_preview_id(object, field)
+      wmd = wmd_textarea(object, field, options)
+      wmd << link_to_function("Preview", "Effect.toggle('#{p_id}','appear')")
+      wmd << wmd_preview(:id=>p_id)
+      wmd << create_wmd(wmd_element_id(object, field), p_id )
+      wmd
+    end
+    
     def wmd_resizable_textarea(object, field, options ={})
       content = wmd_textarea(object, field, :class=>'resizable')
       return content <<
