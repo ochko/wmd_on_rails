@@ -1,7 +1,7 @@
 WmdOnRails
 ==========
 
-This plugin helps you use the WMD Editor in your Rails app.
+This plugin helps you use the Resizable WMD Editor in your Rails app.
 
 Use It
 ======
@@ -19,10 +19,23 @@ View methods
   Outputs WMD JavaScript setup. Give it any options you want to
   pass to the WMD editor. Defaults are as normal, except output.
   We output Markdown by default instead of HTML.
-  
+- wmd_textarea(object, field, options = {})
+
+  Outputs WMD Editor textarea. 
+- wmd_resizable_textarea(object, field, options ={})
+
+  Outputs Resizable WMD textarea.  
 - wmd_preview(options)
 
   Outputs a div with the class "wmd-preview". Options are :tag to use
   something besides a div, and :class to add more classes to the object.
+- wmd_editor(object, field, options ={})
 
-Copyright (c) 2008 Clinton "Knuckles" Nixon of Viget Labs, released under the MIT license.
+  Outputs resizable WMD textarea and wmd preview.
+
+Requirements
+------------
+It uses JQuery for textarea resizer. 
+You can download JQuery from http://jquery.com/
+
+Copyright (c) 2009 Maahai L.Ochirkhuyag, released under the MIT license.
