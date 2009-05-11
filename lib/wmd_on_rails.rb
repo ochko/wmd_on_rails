@@ -9,6 +9,7 @@ module WmdOnRails
       output = javascript_tag "wmd_options = #{params.to_json}"
       output += javascript_include_tag "wmd/wmd"
       output += javascript_include_tag "wmd/textarearesizer"
+      output += stylesheet_link_tag "wmd"
       output
     end
     
