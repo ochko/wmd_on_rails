@@ -12,12 +12,13 @@ module WmdOnRails
     end
     
     def wmd_preview(params = {})
+      id = params[:id] || 'wmd-preview'
       params = { :tag => :div, :class => '' }.merge(params)
       
       tag = params[:tag]
       html_class = params[:class].split(/\s+/).push('wmd-preview').join(" ")
       
-      content_tag(tag, '', :class => html_class)
+      content_tag(tag, '', :class => html_class, :id => id)
     end
 
     def create_wmd(textarea_id, preview_id = nil)
