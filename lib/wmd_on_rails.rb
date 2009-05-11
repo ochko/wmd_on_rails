@@ -43,10 +43,10 @@ var #{textarea_id} = document.getElementById(#{textarea_id.inspect});
 EOF
       if preview_id
         js += <<EOF
-var preview = document.getElementById(#{preview_id.inspect});
-var panes = {input: textarea, preview: preview, output: null};
-var previewManager = new Attacklab.wmd.previewManager(panes);
-var editor = new Attacklab.wmd.editor(textarea, previewManager.refresh);
+var #{textarea_id}_preview = document.getElementById(#{preview_id.inspect});
+var #{textarea_id}_panes = {input: #{textarea_id}, preview: #{textarea_id}_preview, output: null};
+var #{textarea_id}_previewManager = new Attacklab.wmd.previewManager(#{textarea_id}_panes);
+var #{textarea_id}_editor = new Attacklab.wmd.editor(#{textarea_id}, #{textarea_id}_previewManager.refresh);
 EOF
       else
         js += <<EOF
@@ -83,8 +83,7 @@ EOF
         inputs = "<textarea id='#{id}' #{cols} #{rows} name='#{object}[#{field}]' class='#{html_class}'>#{value}</textarea>\n"
       end
 
-      return inputs <<
-        create_wmd(id)
+      return inputs 
     end
     
     def wmd_resizable_textarea(object, field, options ={})
@@ -101,6 +100,11 @@ EOF
     def wmd_element_id(object, field)
       id = eval("@#{object}.id")
       "#{object}_#{id}_#{field}_wmd"
+    end
+    
+    def wmd_preview_id(object, field)
+      id = eval("@#{object}.id")
+      "#{object}_#{id}_#{field}_preview"
     end
     
   end
